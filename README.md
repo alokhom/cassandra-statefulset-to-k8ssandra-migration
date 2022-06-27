@@ -1,5 +1,8 @@
-# cassandra statefulset cluster to k8ssandra migration without downtime
-A helpful tutorial for cassandra statefulset to k8ssandra migration.
+Cassandra statefulset cluster to k8ssandra migration
+------------------------------------
+- A helpful tutorial for cassandra statefulset to k8ssandra migration.
+- The Migration has no downtime
+
 
 Some Cassandra Adminstrators are motivated to migrate from a statefulset cassandra to k8ssandra. Here is a way to step by step do the migration.
 
