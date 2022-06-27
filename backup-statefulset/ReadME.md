@@ -315,7 +315,7 @@ Backup statefulset cassandra.
 
 
 4. Add the cronJob for the backup. Ensure it in the right namespace where the configmap is and statefulset.
-   see file in the folder backup-statefulset/backup_CronJob.yaml
+   see file in this folder backup_CronJob.yaml
 
 
 5. Checklist.
