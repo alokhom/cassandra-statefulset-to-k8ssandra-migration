@@ -1,4 +1,5 @@
-backup statefulset cassandra.
+Backup statefulset cassandra.
+-------------------------------
 
 1) chose the bucket where you want to backup your cassandra statefulset cluster using medusa. Make it from the options supported.
 - https://github.com/thelastpickle/cassandra-medusa/tree/master/docs
