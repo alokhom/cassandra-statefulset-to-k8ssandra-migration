@@ -37,6 +37,7 @@ cassandra:
   additionalSeeds:
   # it is the cassandra-0 node IP from the cassandra statefulset (source cluster)
   - 172.31.4.217
+  # you can also provide domain name cassandra-0.cassandra.default.svc.cluster.local. It should be a service with a valid port
   heap:
    size: 31g
   gc:
