@@ -1,0 +1,72 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata: 
+  name: medusa-grpc-backup
+spec: 
+  schedule: "35 0 * * 0-6"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate: 
+    spec: 
+      template: 
+        metadata: 
+          name: medusa-grpc-backup
+        spec:
+          initContainers:
+            - name: medusa-copy
+              image: "alpine:3.15"
+              resources:
+                requests:
+                  cpu: 20m
+                  memory: 200Mi
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/sh", "-c"]
+              args:
+                - cp ./data/scripts/* ./scripts;
+                  apk add --update --no-cache --quiet curl coreutils; apk --quiet upgrade;
+                  ./scripts/configure_k8s.sh;
+                  sleep 2;
+                  sh ./scripts/ascertain_cassandra_nodes.sh;
+                  sleep 2;
+                  sh ./scripts/copy_yaml.sh;
+                  sleep 2;
+                  echo "yamls copied from cass containers to medusa containers...";
+                  sleep 10;
+              volumeMounts:
+                - name: cache-volume
+                  mountPath: "/scripts"
+                - name: data-scripts
+                  mountPath: /data/scripts
+          containers:
+            - name: medusa-grpc-backup
+              image: "python:3.8-slim-buster"
+              resources:
+                requests:
+                  cpu: 20m
+                  memory: 200Mi
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/sh", "-c"]
+              args:
+                - apt update -qq && apt-get install -qq --no-install-recommends git curl > /dev/null;
+                  rm -rf /var/lib/apt/lists/*;
+                  git clone https://github.com/thelastpickle/cassandra-medusa.git;
+                  cd cassandra-medusa;
+                  pip install -r requirements-grpc.txt > /dev/null;
+                  cd medusa/service/grpc;
+                  python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. medusa.proto;
+                  cp /data/scripts/client.py .;
+                  sleep 2;
+                  sh /data/scripts/configure_k8s.sh;
+                  sleep 2;
+                  sh /data/scripts/ascertain_cassandra_nodes.sh;
+                  sleep 2;
+                  sh /data/scripts/backup_with_medusa.sh;
+                  sleep 2;
+              volumeMounts:
+                - name: data-scripts
+                  mountPath: /data/scripts
+          volumes:
+            - name: data-scripts
+              configMap: 
+                defaultMode: 0755
+                name: scripts
