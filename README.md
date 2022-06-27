@@ -30,8 +30,8 @@ cqlsh> ALTER KEYSPACE <keyspace_name> WITH replication = {'class': 'NetworkTopol
 ```
 # values.yaml
 cassandra:
-  version: "4.0.0"
-  # version "3.11.12"
+  # version: "4.0.0"
+  version "3.11.12"
   clusterName: "cluster"
   allowMultipleNodesPerWorker: false
   additionalSeeds:
