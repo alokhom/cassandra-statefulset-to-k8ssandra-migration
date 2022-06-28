@@ -2,6 +2,7 @@ Cassandra statefulset cluster to k8ssandra migration
 ----------------------------------
 - A helpful tutorial for cassandra statefulset to k8ssandra migration.
 - The Migration has no downtime
+- reference [link](https://k8ssandra.io/blog/tutorials/cassandra-database-migration-to-kubernetes-zero-downtime/)
 
 
 Some Cassandra Adminstrators are motivated to migrate from a statefulset cassandra to k8ssandra. Here is a way to step by step do the migration.
@@ -30,13 +31,14 @@ cqlsh> ALTER KEYSPACE <keyspace_name> WITH replication = {'class': 'NetworkTopol
 ```
 # values.yaml
 cassandra:
-  version: "4.0.0"
-  # version "3.11.12"
+  # version: "4.0.0"
+  version "3.11.12"
   clusterName: "cluster"
   allowMultipleNodesPerWorker: false
   additionalSeeds:
   # it is the cassandra-0 node IP from the cassandra statefulset (source cluster)
   - 172.31.4.217
+  # you can also provide domain name cassandra-0.cassandra.default.svc.cluster.local. It should be a service with a valid port
   heap:
    size: 31g
   gc:
