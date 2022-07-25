@@ -109,9 +109,9 @@ cqlsh> ALTER KEYSPACE <keyspace_name> WITH replication = {'class': 'NetworkTopol
 ```
 Run rebuild on new cluster
 ```
-   # kubectl exec -it pod/k8s-1-r1-sts-0 -c cassandra -n k8ssandra -- nodetool rebuild k8s-1
-   # kubectl exec -it pod/k8s-1-r1-sts-1 -c cassandra -n k8ssandra -- nodetool rebuild k8s-1
-   # kubectl exec -it pod/k8s-1-r1-sts-2 -c cassandra -n k8ssandra -- nodetool rebuild k8s-1
+   # kubectl exec -it pod/k8s-1-r1-sts-0 -c cassandra -n k8ssandra -- nodetool rebuild datacenter1
+   # kubectl exec -it pod/k8s-1-r1-sts-1 -c cassandra -n k8ssandra -- nodetool rebuild datacenter1
+   # kubectl exec -it pod/k8s-1-r1-sts-2 -c cassandra -n k8ssandra -- nodetool rebuild datacenter1
 ```
 - final output. Watch the owns ( 100%)
 ```
