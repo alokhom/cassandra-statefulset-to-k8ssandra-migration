@@ -8,22 +8,15 @@ Audience:
 - Those who want to migrate from STS cassandra to k8ssandra and are referring to https://k8ssandra.io/blog/tutorials/cassandra-database-migration-to-kubernetes-zero-downtime/
 
 
-What is Addresses:
------------------------------
-- How to use medusa on statefulset cassandra?
-
-
-What you will need:
+Toolkit used:
 -------------------
-- a s3 storage for backup/restore test on the existing STS cluster. ( public or onprem )
-- Pick an appropriate s3 intergation. https://github.com/thelastpickle/cassandra-medusa/tree/master/docs
-- Below Steps.
+- A s3 storage for backup/restore test on the existing STS cluster. ( public or onprem ). Pick an appropriate s3 intergation. https://github.com/thelastpickle/cassandra-medusa/tree/master/docs
+- The repo uses medusa toolkit on the STS cluster manifest. https://github.com/thelastpickle/cassandra-medusa
+- Implement the below Steps.
 
 Steps:
 ------
-1) A prior cassandra sts must be runnign similar to https://kubernetes.io/docs/tutorials/stateful-application/cassandra/. 
-
-For example when you run the command..
+1) A prior cassandra sts must be runnign similar to https://kubernetes.io/docs/tutorials/stateful-application/cassandra/. For example when you run the command..
 ```
 $ nodetool status
 Datacenter: datacenter1
@@ -37,13 +30,13 @@ UN  172.31.22.153  10.2 GiB  16      100.0%            d6488a81-be1c-4b07-9145-2
 ```
 Proceed with below steps if above is a success.
 
-2) Backup your statefulset cluster. ( see the backup-statefulset directory in this repo)
-3) Restore test the medusa backup copy. ( see restore directory in this repo )
+2) Backup your statefulset cluster. ( see backup-statefulset directory)
+3) Restore test the medusa backup copy. ( see restore directory )
 4) Steps below for k8ssandra migration(it has some common things with the step 1, see the migration directory in the repo)
-
-Suggestions:
------------
-Any suggestions for improvement are welcome. 
+5) Set the replicas for STS cluster to 0 and keep the PV for a the time till you are confident to delete them to save cost. 
+```
+kubectl scale statefulsets <sts-cassandra-name> --replicas=0
+```
 
 
 
