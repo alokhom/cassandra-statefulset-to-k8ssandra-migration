@@ -320,10 +320,7 @@ Backup statefulset cassandra.
 
 
 5. Checklist.
-     - Check the manifests are in the same namespace and correct the manifests if its not.
-     - Run the Cronjob.
-     - Ensure that the cronjob is able to work successfully given the above configuration 1-4.
-     - Check backups inside the bucket post running the ConfigMap. 
-     - cronjob's job and its pod logs should show appropriate logs.
-     - backups should be steadily watched and also CronJob run-on-demand so you get some valid full backups. 
-     - Statefulset cassandra restore will be handled in the last if at all there is a failure to migrate.
+   - Check the manifests are in the same namespace and correct the manifests if its not.
+   - Run the Cronjob to ensure the backup in s3. See the logs of the pod. It should be steady.
+   - Check backups inside the bucket post running the CronJob.
+   - To ensure the k8ssadra migration works well, ensure there is a perfect backup. 
