@@ -37,3 +37,4 @@ kubectl scale statefulsets <sts-cassandra-name> --replicas=0
 References:
 ----------
 https://k8ssandra.io/blog/tutorials/cassandra-database-migration-to-kubernetes-zero-downtime/
+https://github.com/alokhom/alokhom.github.io/blob/master/_posts/2022-7-25-test.md
