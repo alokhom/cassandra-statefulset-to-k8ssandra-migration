@@ -7,7 +7,7 @@ To restore from the backup ensure the backup step 1 is followed and you have bac
           labels:          
             cassandra: restore
 ```
-After the pods restart, please add the following snippet to the <b>initContainer>/b> of the cassandra sts yaml and replace with the right value for the env variables for example BACKUP_NAME. 
+After the pods restart, please add the following snippet to the <b>initContainer</b> of the cassandra sts yaml and replace with the right value for the env variables for example BACKUP_NAME. 
 - For the first time there is no RESTORE_KEY value so you can set any value to the variable that will be used again. 
 - The medusa-cass-yaml container block below is used to extract the cassandra.yml as a template from a running statefulset cassandra pod. (its the vanilla statefulset cassandra)
 - Then the template is set with the cassandra pod IP and ported to the medusa-restore container. 
