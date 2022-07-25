@@ -1,28 +1,14 @@
-Cassandra statefulset cluster to k8ssandra migration
-----------------------------------------------------
-- A helpful tutorial for first time cassandra statefulset to k8ssandra migration.
-- The Migration has no downtime. 
-- Useful reference https://k8ssandra.io/blog/tutorials/cassandra-database-migration-to-kubernetes-zero-downtime/
+Backup of Stateful cassandra:
+------------------------------
+- The procedure allows to migrate from Cassandra in a vanilla STS to K8ssandra
+- The backup will be used in case something goes wrong after the migration (although you could restore that backup to the K8ssandra cluster as well)
 
-Motivation: 
+Audience: 
 ----------
-- Some Cassandra Adminstrators are motivated to migrate from a statefulset cassandra to k8ssandra. 
-- With the first time migration Administrators, they is a concern if all will go well with k8ssandra migration. 
-- They are concerned about the data in the disc. Be it dev/test or production data in the cassandra disk. 
-- Here is a way to step by step do the safe migration. 
-
-Most common thought that crosses the mind of the Administrators:
-----------------------------------------------------------------
-- I could not find on the internet how to backup and restore on a statefulset vanilla cassandra. 
-- I could not find how to use Medusa to backup and restore from a statefulset vanilla cassandra. 
-- I cannot risk the migration if there is no fallback procedure. 
-
-A statefulset (vanilla) cassandra:
----------------------------------
-- Reference https://kubernetes.io/docs/tutorials/stateful-application/cassandra/. 
+- Those who want to migrate from STS cassandra to k8ssandra and are referring to https://k8ssandra.io/blog/tutorials/cassandra-database-migration-to-kubernetes-zero-downtime/
 
 
-A possible solution:
+What is Addresses:
 -----------------------------
 - How to use medusa on statefulset cassandra?
 
