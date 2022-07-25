@@ -5,10 +5,10 @@ Cassandra statefulset cluster to k8ssandra migration
 - reference [link](https://k8ssandra.io/blog/tutorials/cassandra-database-migration-to-kubernetes-zero-downtime/)
 
 
-Some Cassandra Adminstrators are motivated to migrate from a statefulset cassandra to k8ssandra. Here is a way to step by step do the migration.
+Motivation: Some Cassandra Adminstrators are motivated to migrate from a statefulset cassandra to k8ssandra. Here is a way to step by step do the migration. They are concerned if all will go well with their data in their discs. Be it dev/test or production data in the disk.
 
 1) backup your statefulset cluster. ( see the backup-statefulset folder)
-2) follow below steps mentioned below:
+2) follow below steps mentioned below for k8ssandra migration(it has some common things with the step 1) :
 
 - cassandra sts cluster : run `nodetool status` chech all status.
 ```
