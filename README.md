@@ -1,12 +1,7 @@
-Backup of StatefulSet cassandra:
-------------------------------
+Backup of StatefulSet cassandra prior to K8ssandra migration:
+--------------------------------------------------------------
 - The procedure allows to migrate from Cassandra in a vanilla STS to K8ssandra
 - The backup will be used in case something goes wrong after the migration (although you could restore that backup to the K8ssandra cluster as well)
-
-Audience: 
-----------
-- Those who want to migrate from STS cassandra to k8ssandra and are referring to https://k8ssandra.io/blog/tutorials/cassandra-database-migration-to-kubernetes-zero-downtime/
-
 
 Toolkit used:
 -------------------
@@ -39,4 +34,6 @@ kubectl scale statefulsets <sts-cassandra-name> --replicas=0
 ```
 
 
-
+References:
+----------
+https://k8ssandra.io/blog/tutorials/cassandra-database-migration-to-kubernetes-zero-downtime/
