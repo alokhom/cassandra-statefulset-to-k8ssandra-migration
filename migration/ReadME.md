@@ -23,7 +23,7 @@ UN  172.31.22.153  10.2 GiB  16      100.0%            d6488a81-be1c-4b07-9145-2
 cqlsh> ALTER KEYSPACE <keyspace_name> WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter1': 3};
 ```
 - We need to make a new k8ssandra cluster for the cass-operator with the below manifest.
-- It is optional to keep the same cassandra cluster name as source cluster as the cassandra clients using the new cluster will check for some cluster variables. ( please double check). We have used the same cluster name as source here.
+- It is optional to keep the same cassandra cluster name as source cluster as the cassandra clients using the new cluster will check for some cluster variables used on the cassandra client-end for eg. CASSANDRA_CLUSTER_NAME or similar. ( please check client app variables that connect cassandra cluster). We have used the same cluster name as source cluster here so that our cassandra client apps donot complain. We have used a different DC name k8s-1 to identify the k8ssandra DC.
 ```
 # values.yaml
 cassandra:
@@ -107,7 +107,7 @@ system_auth,system_distributed,system_traces and other non-system/user keyspaces
 ```
 cqlsh> ALTER KEYSPACE <keyspace_name> WITH replication = {'class': 'NetworkTopologyStrategy', 'datacenter1': '3', 'k8s-1': '3'};
 ```
-Run rebuild
+Run rebuild on new cluster
 ```
    # kubectl exec -it pod/k8s-1-r1-sts-0 -c cassandra -n k8ssandra -- nodetool rebuild k8s-1
    # kubectl exec -it pod/k8s-1-r1-sts-1 -c cassandra -n k8ssandra -- nodetool rebuild k8s-1
