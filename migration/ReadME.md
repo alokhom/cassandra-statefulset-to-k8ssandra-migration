@@ -120,9 +120,9 @@ Datacenter: k8s-1
 Status=Up/Down
 |/ State=Normal/Leaving/Joining/Moving
 --  Address        Load       Tokens  Owns (effective)  Host ID                               Rack
-UN  10.0.3.10      78.16 KiB  16      0.0%              c63b9b16-24fe-4232-b146-b7c2f450fcc6  europe-west-1a
-UN  10.0.2.66      69.14 KiB  16      0.0%              b1409a2e-cba1-482f-9ea6-c895bf296cd9  europe-west-1b
-UN  10.0.1.77      69.13 KiB  16      0.0%              78c53702-7a47-4629-a7bd-db41b1705bb8  europe-west-1c
+UN  10.0.3.10      78.16 KiB  16      100.0%              c63b9b16-24fe-4232-b146-b7c2f450fcc6  europe-west-1a
+UN  10.0.2.66      69.14 KiB  16      100.0%              b1409a2e-cba1-482f-9ea6-c895bf296cd9  europe-west-1b
+UN  10.0.1.77      69.13 KiB  16      100.0%              78c53702-7a47-4629-a7bd-db41b1705bb8  europe-west-1c
 Datacenter: datacenter1
 =====================
 Status=Up/Down
