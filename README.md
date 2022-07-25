@@ -32,7 +32,7 @@ Proceed with below steps if above is a success.
 ```
 kubectl scale statefulsets <sts-cassandra-name> --replicas=0
 ```
-
+6) schedule backup and restore on k8ssandra using https://docs-v2.k8ssandra.io/tasks/backup-restore/
 
 References:
 ----------
