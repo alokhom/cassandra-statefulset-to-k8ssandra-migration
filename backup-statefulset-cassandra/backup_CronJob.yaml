@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata: 
   name: medusa-grpc-backup
+  namespace: <namespace of the sts>
 spec: 
   schedule: "35 0 * * 0-6"
   successfulJobsHistoryLimit: 3
