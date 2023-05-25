@@ -1,4 +1,7 @@
-Backup of StatefulSet cassandra prior to K8ssandra migration:
+StatefulSet cassandra  migration to k8ssandra.
+
+
+Backup of StatefulSet cassandra required for a K8ssandra migration:
 --------------------------------------------------------------
 - The procedure allows to migrate from Cassandra in a vanilla STS to K8ssandra
 - The backup will be used in case something goes wrong after the migration (although you could restore that backup to the K8ssandra cluster as well)
