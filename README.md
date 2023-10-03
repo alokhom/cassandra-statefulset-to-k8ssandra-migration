@@ -1,5 +1,10 @@
 StatefulSet cassandra  migration to k8ssandra.
 
+Problem statement
+------------------
+There is no documentation for cassandra migration from statefulset to k8ssandra. 
+This repo helps to make those steps possible to migrate within kubernetes. 
+This was tested successfully on GKE using Statefulset migration to k8ssandra operator migration.
 
 Backup of StatefulSet cassandra required for a K8ssandra migration:
 --------------------------------------------------------------
